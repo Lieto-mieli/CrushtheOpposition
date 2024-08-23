@@ -11,7 +11,6 @@ public class ResolutionControl : MonoBehaviour
 
     private float currentRefreshRate;
     private int currentResolutionIndex = 0;
-    private bool onlyCurrentRefreshrate;
     public int windowType;
     void Start()
     {
