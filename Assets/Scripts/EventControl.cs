@@ -15,10 +15,9 @@ public class EventControl : MonoBehaviour
     public TextMeshProUGUI choice2text;
     public GameObject choice3;
     public TextMeshProUGUI choice3text;
-    public Sprite temp;
-
-    // t‰‰ on niin alfa retu mut se on funny so...
-    new List<Event> eventList;
+    private Sprite temp;
+    private AudioSource phoneSfx;
+    private List<Event> eventList;
 
     public void NewEvent(int eventID)
     {
@@ -47,5 +46,7 @@ public class EventControl : MonoBehaviour
                 choice3.SetActive(true);
                 break;
         }
+        phoneSfx.pitch = Random.Range(0.95f, 1.05f);
+        phoneSfx.Play();
     }
 }
