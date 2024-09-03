@@ -7,4 +7,5 @@ public class ResourceEffect : MonoBehaviour
     public int resourceID;
     public float effectMagnitude;
     public float effectDuration;
+    public string internalName;
 }

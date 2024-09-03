@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class ResourceControl : MonoBehaviour
@@ -12,7 +13,7 @@ public class ResourceControl : MonoBehaviour
     private float resource1amount; // money
     private float resource2amount; // public opinion
     private float resource3amount; // revolution
-    private List<ResourceEffect> currentEffects;
+    private List<ResourceEffect> currentEffects = new List<ResourceEffect> { };
     private void Start()
     {
         resource1amount = 60;
@@ -43,9 +44,9 @@ public class ResourceControl : MonoBehaviour
             }
         }
 
-        resource1.GetComponent<Slider>().value = resource1amount;
-        resource2.GetComponent<Slider>().value = resource2amount;
-        resource3.GetComponent<Slider>().value = resource3amount;
+        resource1.GetComponent<UnityEngine.UI.Slider>().value = resource1amount;
+        resource2.GetComponent<UnityEngine.UI.Slider>().value = resource2amount;
+        resource3.GetComponent<UnityEngine.UI.Slider>().value = resource3amount;
     }
     public void NewEffect(int resourceID, float magnitude, float duration)
     {

@@ -18,7 +18,19 @@ public class EventControl : MonoBehaviour
     private Sprite temp;
     private AudioSource phoneSfx;
     private List<Event> eventList;
-
+    private void Start()
+    {
+        eventList.Add(new Event
+        {
+            title = "a Man is blocking our tanks!",
+            imagePathName = "",
+            choiceCount = 3,
+            choice1 = "Remove them forcefully",
+            choice2 = "De-escalate and wait for them to leave",
+            choice3 = "To the concentration camp they go!"
+        }
+    );
+    }
     public void NewEvent(int eventID)
     {
         Event tempEvent = eventList[eventID];
