@@ -11,10 +11,10 @@ public class ResourceControl : MonoBehaviour
     public GameObject resource2;
     public GameObject resource3;
     public GameObject resource4;
-    private float resource1amount; // money
-    private float resource2amount; // public opinion
-    private float resource3amount; // revolution
-    private float resource4amount; // fear
+    public float resource1amount; // money
+    public float resource2amount; // public opinion
+    public float resource3amount; // revolution
+    public float resource4amount; // fear
     private List<ResourceEffect> currentEffects = new List<ResourceEffect> { };
     private void Start()
     {

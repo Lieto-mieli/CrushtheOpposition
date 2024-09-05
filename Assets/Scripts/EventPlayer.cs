@@ -7,7 +7,8 @@ public class EventPlayer : MonoBehaviour
     public GameObject eventControl;
     void Start()
     {
-        eventControl.GetComponent<EventControl>().NewEvent(0);
+        //line below is for testing
+        //eventControl.GetComponent<EventControl>().NewEvent(0);
     }
     void Update()
     {
