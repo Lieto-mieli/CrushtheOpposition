@@ -18,7 +18,7 @@ public class EventControl : MonoBehaviour
     private Sprite temp;
     public AudioSource phoneSfx;
     private Event tempEvent;
-    private bool isEventOn = false;
+    public bool isEventOn = false;
     public ResourceControl resourceControl;
     private static Event[] eventList = new Event[]
     {

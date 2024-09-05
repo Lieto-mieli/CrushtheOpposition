@@ -7,6 +7,10 @@ public class PlansMenu : MonoBehaviour
 {
     private bool moveMenu;
     private bool isOpen;
+    public GameObject planButton1;
+    public GameObject planButton2;
+    public GameObject planButton3;
+    public GameObject planButton4;
     private void Start()
     {
     }
@@ -59,5 +63,9 @@ public class PlansMenu : MonoBehaviour
                     break;
             }
         }
+    }
+    public void EnactPlan(int planNum)
+    {
+
     }
 }

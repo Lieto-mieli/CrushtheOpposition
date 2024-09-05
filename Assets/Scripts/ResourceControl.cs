@@ -11,17 +11,17 @@ public class ResourceControl : MonoBehaviour
     public GameObject resource2;
     public GameObject resource3;
     public GameObject resource4;
-    public float resource1amount; // money
-    public float resource2amount; // public opinion
-    public float resource3amount; // revolution
-    public float resource4amount; // fear
+    public float resource1amount; // Treasury
+    public float resource2amount; // Public Opinion
+    public float resource3amount; // Societal Unrest
+    public float resource4amount; // Fear
     private List<ResourceEffect> currentEffects = new List<ResourceEffect> { };
     private void Start()
     {
         resource1amount = 60;
         resource2amount = 50;
         resource3amount = 0;
-        resource4amount = 10;
+        resource4amount = 20;
         currentEffects.Capacity = 99;
     }
     void Update()
@@ -33,19 +33,19 @@ public class ResourceControl : MonoBehaviour
                 switch (effect.resourceID)
                 {
                     case 1:
-                        resource1amount += Mathf.Clamp(Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        Mathf.Clamp(resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
                         break;
                     case 2:
-                        resource2amount += Mathf.Clamp(Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        Mathf.Clamp(resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
                         break;
                     case 3:
-                        resource3amount += Mathf.Clamp(Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        Mathf.Clamp(resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
                         break;
                     case 4:
-                        resource4amount += Mathf.Clamp(Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        Mathf.Clamp(resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
                         break;
                 }
-                effect.effectDuration -= Time.deltaTime * 1;
+                effect.effectDuration -= GameSpeedValue.gameSpeed * Time.deltaTime;
                 if (effect.effectDuration <= 0) { currentEffects.Remove(effect); }
             }
         }

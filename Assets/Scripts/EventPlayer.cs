@@ -5,13 +5,17 @@ using UnityEngine;
 public class EventPlayer : MonoBehaviour
 {
     public GameObject eventControl;
+    private System.Random r;
     void Start()
     {
         //line below is for testing
         //eventControl.GetComponent<EventControl>().NewEvent(0);
     }
-    void Update()
+    public void PlayRandomEvent()
     {
-        
+        if (eventControl.GetComponent<EventControl>().isEventOn == false)
+        {
+            eventControl.GetComponent<EventControl>().NewEvent(r.Next(0, 1));
+        }
     }
 }
