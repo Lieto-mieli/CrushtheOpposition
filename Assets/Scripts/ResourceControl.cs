@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -15,6 +16,7 @@ public class ResourceControl : MonoBehaviour
     public float resource2amount; // Public Opinion
     public float resource3amount; // Societal Unrest
     public float resource4amount; // Fear
+    public float resource5score;
     private List<ResourceEffect> currentEffects = new List<ResourceEffect> { };
     private void Start()
     {
@@ -22,13 +24,14 @@ public class ResourceControl : MonoBehaviour
         resource2amount = 50;
         resource3amount = 0;
         resource4amount = 20;
+        resource5score = 0;
         currentEffects.Capacity = 99;
     }
     void Update()
     {
         if (currentEffects != null)
         {
-            foreach (ResourceEffect effect in currentEffects)
+            foreach (ResourceEffect effect in currentEffects.ToList())
             {
                 switch (effect.resourceID)
                 {
@@ -43,6 +46,9 @@ public class ResourceControl : MonoBehaviour
                         break;
                     case 4:
                         Mathf.Clamp(resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        break;
+                    case 5:
+                        Mathf.Clamp(resource5score += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
                         break;
                 }
                 effect.effectDuration -= GameSpeedValue.gameSpeed * Time.deltaTime;

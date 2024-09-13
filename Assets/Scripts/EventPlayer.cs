@@ -6,16 +6,21 @@ public class EventPlayer : MonoBehaviour
 {
     public GameObject eventControl;
     private System.Random r;
+    public int industrializationForced = 0;
     void Start()
     {
         //line below is for testing
         //eventControl.GetComponent<EventControl>().NewEvent(0);
+        r = new System.Random();
     }
     public void PlayRandomEvent()
     {
         if (eventControl.GetComponent<EventControl>().isEventOn == false)
         {
-            eventControl.GetComponent<EventControl>().NewEvent(r.Next(0, 1));
+            int temp = r.Next(0, 4+industrializationForced);    
+            Debug.Log(temp);
+            eventControl.GetComponent<EventControl>().NewEvent(temp);
+
         }
     }
 }
