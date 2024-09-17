@@ -70,4 +70,12 @@ public class ResourceControl : MonoBehaviour
     {
         currentEffects.Add(effect);
     }
+    public bool GetEffect(string name)
+    {
+        foreach (ResourceEffect effect in currentEffects)
+        {
+            if (effect.internalName == name) return true;
+        }
+        return false;
+    }
 }

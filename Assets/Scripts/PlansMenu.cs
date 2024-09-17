@@ -63,6 +63,10 @@ public class PlansMenu : MonoBehaviour
                     planButton4.GetComponent<PlanButton>().Title.text = "Undermine minorities";
                     planButton4.GetComponent<PlanButton>().Positives.text = "++Public Opinion";
                     planButton4.GetComponent<PlanButton>().Negatives.text = "-Public Opinion";
+                    ChangeButtonState(planButton1, "S1PlanOpinionIncrease");
+                    ChangeButtonState(planButton2, "S2PlanOpinionIncrease");
+                    ChangeButtonState(planButton3, "S3PlanOpinionIncrease");
+                    ChangeButtonState(planButton4, "S4PlanOpinionIncrease");
                     // switch to menu 1
                     break;
                 case 2:
@@ -78,6 +82,10 @@ public class PlansMenu : MonoBehaviour
                     planButton4.GetComponent<PlanButton>().Title.text = "Force Industrialization";
                     planButton4.GetComponent<PlanButton>().Positives.text = "+++Treasury?";
                     planButton4.GetComponent<PlanButton>().Negatives.text = "-Public Opinion?";
+                    ChangeButtonState(planButton1, "E1PlanTreasuryIncrease");
+                    ChangeButtonState(planButton2, "E2PlanTreasuryDecrease");
+                    ChangeButtonState(planButton3, "E3PlanTreasuryIncrease");
+                    ChangeButtonState(planButton4, "E4PlanTreasuryIncrease");
                     // switch to menu 2
                     break;
                 case 3:
@@ -93,6 +101,10 @@ public class PlansMenu : MonoBehaviour
                     planButton4.GetComponent<PlanButton>().Title.text = "Build \"rehabilitation\" camps";
                     planButton4.GetComponent<PlanButton>().Positives.text = "++Fear\r\n++Score";
                     planButton4.GetComponent<PlanButton>().Negatives.text = "---Public Opinion\r\n--Treasury";
+                    ChangeButtonState(planButton1, "O1PlanFearIncrease");
+                    ChangeButtonState(planButton2, "O2PlanFearIncrease");
+                    ChangeButtonState(planButton3, "O3PlanFearIncrease");
+                    ChangeButtonState(planButton4, "O4PlanFearIncrease");
                     // switch to menu 3
                     break;
             }
@@ -109,21 +121,25 @@ public class PlansMenu : MonoBehaviour
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(2, 1.75f, 30, "S1PlanOpinionIncrease"),
                         new ResourceEffect(1, -1.5f, 30, "S1PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton1, true);
                         break;
                     case 2:
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(2, 2.5f, 30, "S2PlanOpinionIncrease"),
                         new ResourceEffect(1, -2.25f, 30, "S2PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton2, true);
                         break;
                     case 3:
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(2, 3.25f, 30, "S3PlanOpinionIncrease"),
                         new ResourceEffect(1, -3f, 30, "S3PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton3, true);
                         break;
                     case 4:
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(2, 2.25f, 30, "S4PlanOpinionIncrease"),
                         new ResourceEffect(2, 1f, 30, "S4PlanOpinionDecrease")};
+                        ChangeButtonState(planButton4, true);
                         break;
                 }
                 break;
@@ -134,22 +150,26 @@ public class PlansMenu : MonoBehaviour
                         tempList = new ResourceEffect[] { 
                             new ResourceEffect(1, 2.5f, 30, "E1PlanTreasuryIncrease"),
                             new ResourceEffect(2, -2.25f, 30, "E1PlanOpinionDecrease")};
+                        ChangeButtonState(planButton1, true);
                         break;
                     case 2:
                         tempList = new ResourceEffect[] {
                             new ResourceEffect(1, 60f, 1, "E2PlanTreasuryIncrease"),
                             new ResourceEffect(1, -1.5f, 60, "E2PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton2, true);
                         break;
                     case 3:
                         tempList = new ResourceEffect[] {
                             new ResourceEffect(1, 1.25f, 30, "E3PlanTreasuryIncrease"),
                             new ResourceEffect(4, 1.25f, 30, "E3PlanFearIncrease"),
                             new ResourceEffect(2, -2.25f, 30, "E3PlanOpinionDecrease")};
+                        ChangeButtonState(planButton3, true);
                         break;
                     case 4:
                         tempList = new ResourceEffect[] {
                             new ResourceEffect(1, 3f, 30, "E4PlanTreasuryIncrease"),
                             new ResourceEffect(2, -1.5f, 30, "E4PlanOpinionDecrease")};
+                        ChangeButtonState(planButton4, true);
                         break;
                 }
                 break;
@@ -161,18 +181,21 @@ public class PlansMenu : MonoBehaviour
                         new ResourceEffect(4, 2.25f, 30, "O1PlanFearIncrease"),
                         new ResourceEffect(2, 1f, 30, "O1PlanOpinionDecrease"),
                         new ResourceEffect(1, 1f, 30, "O1PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton1, true);
                         break;
                     case 2:
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(4, 3.25f, 30, "O2PlanFearIncrease"),
                         new ResourceEffect(2, 2f, 30, "O2PlanOpinionDecrease"),
                         new ResourceEffect(1, 1f, 30, "O2PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton2, true);
                         break;
                     case 3:
                         tempList = new ResourceEffect[] {
                         new ResourceEffect(2, 2.25f, 30, "O3PlanOpinionIncrease"),
                         new ResourceEffect(4, 1.25f, 30, "O3PlanFearIncrease"),
                         new ResourceEffect(1, 3.25f, 30, "O3PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton3, true);
                         break;
                     case 4:
                         tempList = new ResourceEffect[] {
@@ -180,6 +203,7 @@ public class PlansMenu : MonoBehaviour
                         new ResourceEffect(5, 2.25f, 30, "O4PlanScoreIncrease"),
                         new ResourceEffect(2, 3f, 30, "O4PlanOpinionDecrease"),
                         new ResourceEffect(1, 2.25f, 30, "O4PlanTreasuryDecrease")};
+                        ChangeButtonState(planButton4, true);
                         break;
                 }
                 break;
@@ -187,6 +211,32 @@ public class PlansMenu : MonoBehaviour
         foreach (ResourceEffect effect in tempList)
         {
             rCtrl.AddEffect(effect);
+        }
+    }
+    public void ChangeButtonState(GameObject button, string effectName)
+    {
+        if (rCtrl.GetEffect(effectName))
+        {
+            button.GetComponent<CanvasGroup>().alpha = 0.5f;
+            button.GetComponent<CanvasGroup>().interactable = false;
+        }
+        else
+        {
+            button.GetComponent<CanvasGroup>().alpha = 1f;
+            button.GetComponent<CanvasGroup>().interactable = true;
+        }
+    }
+    public void ChangeButtonState(GameObject button, bool skip)
+    {
+        if (skip)
+        {
+            button.GetComponent<CanvasGroup>().alpha = 0.5f;
+            button.GetComponent<CanvasGroup>().interactable = false;
+        }
+        else
+        {
+            button.GetComponent<CanvasGroup>().alpha = 1f;
+            button.GetComponent<CanvasGroup>().interactable = true;
         }
     }
 }
