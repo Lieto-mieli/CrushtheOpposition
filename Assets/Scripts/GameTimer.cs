@@ -17,6 +17,7 @@ public class GameTimer : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI rankText;
     public TextMeshProUGUI debugScore;
+    List<int> scoreList;
     private string[] rankings = new string[]
     {
         "Dolfo Hitman",
@@ -42,9 +43,9 @@ public class GameTimer : MonoBehaviour
     void Update()
     {
         Mathf.Clamp(ben.resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * 1, -10, 100);
-        Mathf.Clamp(ben.resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * (-0.4f - (ben.resource2amount / 100)), -10, 100);
-        Mathf.Clamp(ben.resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount),0.1f,3f), -10, 100);
-        Mathf.Clamp(ben.resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * (-0.4f - ((ben.resource4amount / 100) - 0.5f)), -10, 100);
+        Mathf.Clamp(ben.resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1, -10, 100);
+        Mathf.Clamp(ben.resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount),0.1f,2f), -10, 100);
+        Mathf.Clamp(ben.resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1f, -10, 100);
         ben.resource5score += GameSpeedValue.gameSpeed * Time.deltaTime * 1;
         eventTimer -= GameSpeedValue.gameSpeed * Time.deltaTime;
         if (eventTimer <= 0)
@@ -67,6 +68,20 @@ public class GameTimer : MonoBehaviour
         scoreText.text = $"Score: {finalScore}";
         string tempStr = rankings[9-System.Convert.ToInt16(finalScore/100)];
         rankText.text = $"Rank: {tempStr}";
+        scoreList.Capacity = PlayerPrefs.GetInt("myList_count", 1);
+        for (int i = 0; i < scoreList.Count; i++)
+        {
+            if(PlayerPrefs.HasKey("myList_" + i))
+            {
+                scoreList.Add(PlayerPrefs.GetInt("myList_" + i));
+            }
+        }
+        scoreList.Add(finalScore);
+        PlayerPrefs.SetInt("myList_count", scoreList.Count);
+        for (int i = 0; i < scoreList.Count; i++)
+        {
+            PlayerPrefs.SetInt("myList_" + i, scoreList[i]);
+        }
     }
     public void GoToMainMenu()
     {
