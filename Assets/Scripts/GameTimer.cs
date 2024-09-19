@@ -42,10 +42,22 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Mathf.Clamp(ben.resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * 1, -10, 100);
-        Mathf.Clamp(ben.resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1, -10, 100);
-        Mathf.Clamp(ben.resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount),0.1f,2f), -10, 100);
-        Mathf.Clamp(ben.resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1f, -10, 100);
+        if ((ben.resource1amount + GameSpeedValue.gameSpeed * Time.deltaTime * 1) >= 0 && (ben.resource1amount + GameSpeedValue.gameSpeed * Time.deltaTime * 1) <= 100)
+        {
+            ben.resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * 1;
+        }
+        if ((ben.resource2amount + GameSpeedValue.gameSpeed * Time.deltaTime * -1) >= 0 && (ben.resource2amount + GameSpeedValue.gameSpeed * Time.deltaTime * -1) <= 100)
+        {
+            ben.resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1;
+        }
+        if ((ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) >= 0 && (ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) <= 100)
+        {
+            ben.resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f);
+        }
+        if ((ben.resource4amount + GameSpeedValue.gameSpeed * Time.deltaTime * -1) >= 0 && (ben.resource4amount + GameSpeedValue.gameSpeed * Time.deltaTime * -1) <= 100)
+        {
+            ben.resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1;
+        }
         ben.resource5score += GameSpeedValue.gameSpeed * Time.deltaTime * 1;
         eventTimer -= GameSpeedValue.gameSpeed * Time.deltaTime;
         if (eventTimer <= 0)
@@ -63,7 +75,7 @@ public class GameTimer : MonoBehaviour
     public void GameEnd()
     {
         GameSpeedValue.gameSpeed = 0;
-        int finalScore = System.Convert.ToInt16(ben.resource3amount);
+        int finalScore = System.Convert.ToInt16(ben.resource5score);
         gameoverMenu.SetActive(true);
         scoreText.text = $"Score: {finalScore}";
         string tempStr = rankings[9-System.Convert.ToInt16(finalScore/100)];

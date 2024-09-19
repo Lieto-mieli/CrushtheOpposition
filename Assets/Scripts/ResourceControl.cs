@@ -36,19 +36,31 @@ public class ResourceControl : MonoBehaviour
                 switch (effect.resourceID)
                 {
                     case 1:
-                        Mathf.Clamp(resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        if ((resource1amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) >= 0 && (resource1amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) <= 100)
+                        {
+                            resource1amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude;
+                        }
                         break;
                     case 2:
-                        Mathf.Clamp(resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        if ((resource2amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) >= 0 && (resource2amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) <= 100)
+                        {
+                            resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude;
+                        }
                         break;
                     case 3:
-                        Mathf.Clamp(resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        if ((resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) >= 0 && (resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) <= 100)
+                        {
+                            resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude;
+                        }
                         break;
                     case 4:
-                        Mathf.Clamp(resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        if ((resource4amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) >= 0 && (resource4amount + GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude) <= 100)
+                        {
+                            resource4amount += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude;
+                        }
                         break;
                     case 5:
-                        Mathf.Clamp(resource5score += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude, -10, 100);
+                        resource5score += GameSpeedValue.gameSpeed * Time.deltaTime * effect.effectMagnitude;
                         break;
                 }
                 effect.effectDuration -= GameSpeedValue.gameSpeed * Time.deltaTime;

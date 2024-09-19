@@ -11,6 +11,7 @@ public class PlansMenu : MonoBehaviour
     public GameObject planButton3;
     public GameObject planButton4;
     public GameObject resourceThingy;
+    public GameObject eventDog;
     private ResourceControl rCtrl;
     private ResourceEffect[] tempList;
     private void Start()
@@ -169,6 +170,7 @@ public class PlansMenu : MonoBehaviour
                         tempList = new ResourceEffect[] {
                             new ResourceEffect(1, 3f, 30, "E4PlanTreasuryIncrease"),
                             new ResourceEffect(2, -1.5f, 30, "E4PlanOpinionDecrease")};
+                        eventDog.GetComponent<EventPlayer>().industrializationForced = 1;
                         ChangeButtonState(planButton4, true);
                         break;
                 }
