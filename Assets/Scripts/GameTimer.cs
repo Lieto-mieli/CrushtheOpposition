@@ -50,7 +50,7 @@ public class GameTimer : MonoBehaviour
         {
             ben.resource2amount += GameSpeedValue.gameSpeed * Time.deltaTime * -1;
         }
-        if ((ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) >= 0 && (ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) <= 100)
+        if ((ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) >= 0 && (ben.resource3amount + GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f)) <= 110)
         {
             ben.resource3amount += GameSpeedValue.gameSpeed * Time.deltaTime * 0.5f / Mathf.Clamp(Mathf.Log(ben.resource4amount) + Mathf.Log(ben.resource2amount), 0.1f, 2f);
         }
